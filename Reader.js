@@ -46,11 +46,11 @@ class Reader extends React.Component{
             .not('#Pronoun').not('#Date').not('#Place').out('array')
 
         var places = doc.places().out('array')
-        var dates = doc.dates().out('array')
+        var months = doc.match('#Month').out('array')
 
         var out = []
-        if(dates.length)
-            out.push(arrToElm(dates, 'Dates'))
+        // if(months.length)
+        //     out.push(arrToElm(months, 'Months'))
         if(places.length)
             out.push(arrToElm(places, 'Places'))
         if(things.length)
@@ -60,7 +60,7 @@ class Reader extends React.Component{
             this.props.onDebug(out)
 
         if(this.props.onParsed)
-            this.props.onParsed({things: things, places: places, raw: text})
+            this.props.onParsed({things: things, months: months, places: places, raw: text})
     }
 
     render(){

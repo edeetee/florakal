@@ -59,6 +59,10 @@ class MonthPicker extends Component{
                 borderRadius: 1,
                 color: '#212121'
             }}>
+                {this.props.title && 
+                    [<h2 style={{alignSelf: 'center', margin: '2px 0'}}>{this.props.title}</h2>,
+                    <div style={{backgroundColor: '#BDBDBD', margin: '4px', height: 1}} />]
+                }
                 {this.renderMonths()}
             </div>
         )

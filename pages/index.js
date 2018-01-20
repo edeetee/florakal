@@ -42,17 +42,17 @@ export default class Index extends React.Component{
   }
 
   parsed(info){
-    var parsed = chrono.parse(info.raw)
-    console.log(parsed)
-    if(parsed.length == 0)
-      this.setState({from: null, to: null})
-    else {
-      this.setState({
-        from: parsed[0].start.knownValues.month-1,
-        to: parsed[0].end ? parsed[0].end.knownValues.month-1 :
-          parsed[1] ? parsed[1].start.knownValues.month-1 : null
-      })
-    }
+    var newState = {}
+    info.months.forEach(date => {
+      var month = chrono.parse(date)[0].start.knownValues.month-1
+      if(!newState.from)
+        newState = {from: month, to: null}
+      else if(!newState.to)
+        newState.to = month
+    })
+
+    if(newState.length != 0)
+      this.setState(newState)
   }
 
   render(){
@@ -66,6 +66,7 @@ export default class Index extends React.Component{
               this.setState({debug: val})
               this.forceUpdate()
             }}/>
+          <div style={{height: 30}} />
           <MonthRange handleUpdate={(from, to) => this.setState({from:from, to:to})}
             from={this.state.from} to={this.state.to}/>
         </div>

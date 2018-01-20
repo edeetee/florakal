@@ -51,12 +51,12 @@ class MonthRange extends Component{
                 display: 'flex',
                 flexDirection: 'row',
             }}>
-                <MonthPicker 
+                <MonthPicker title="From"
                     handleSelect={n => this.handleUpdate(n, this.state.to)} 
                     selected={this.state.from} 
                     highlighted={this.state.highlighted}/>
                 <div style={{width: 30}} />
-                <MonthPicker 
+                <MonthPicker title="To"
                     handleSelect={n => this.handleUpdate(this.state.from, n)} 
                     selected={this.state.to} 
                     highlighted={this.state.highlighted} />

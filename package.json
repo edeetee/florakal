@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
-    "build": "next build && next export"
+    "build": "next build && next export",
+    "up": "next build && next export && git-pages out"
   },
   "keywords": [],
   "author": "",

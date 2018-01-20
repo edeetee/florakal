@@ -1,12 +1,8 @@
 module.exports = {
     exportPathMap: function() {
       return {
-        '/': { page: '/' }
+        '/': { page: '' }
       }
     },
-    assetPrefix: '',
-    webpack: function(config){
-      config.output.publicPath = '.'
-      return config
-    }
+    assetPrefix: process.env.NODE_ENV == 'production' ? '/florakal' : ''
   }
